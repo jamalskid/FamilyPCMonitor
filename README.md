@@ -16,21 +16,16 @@ The project uses .NET 8 WPF for the visible settings UI and notification-area ap
 
 See [LICENSE](LICENSE) for the MIT license, [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidance, and [SECURITY.md](SECURITY.md) for vulnerability reports. Do not commit real webhook URLs, bot tokens, settings files, database files, or exported CSV logs.
 
-## Publish this project on GitHub
+## Source and contributions
 
-1. Sign in to [GitHub](https://github.com/) and create a **public** repository named `FamilyPCMonitor`. Do not initialize it with a README, license, or `.gitignore`; those files are already in this folder.
-2. In PowerShell from this project folder, set your repository URL and publish the source:
+The source is available at [github.com/jamalskid/FamilyPCMonitor](https://github.com/jamalskid/FamilyPCMonitor). Clone it with:
 
 ```powershell
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/FamilyPCMonitor.git
-git add .
-git status
-git commit -m "Prepare Family PC Monitor for open source"
-git push -u origin main
+git clone https://github.com/jamalskid/FamilyPCMonitor.git
+cd FamilyPCMonitor
 ```
 
-Review `git status` before committing. `.gitignore` excludes build output, local settings, SQLite files, CSV exports, and installer output. If a real webhook URL or token was ever committed, revoke it in Discord immediately; deleting it from the latest version does not remove it from Git history. GitHub Actions builds the solution on Windows for pushes and pull requests.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidance. `.gitignore` excludes build output, local settings, SQLite files, CSV exports, and installer output. Never commit real webhook URLs, bot tokens, settings files, database files, or exported logs. If a real webhook URL or token is exposed, revoke it in Discord immediately; deleting it from the latest version does not remove it from Git history. GitHub Actions builds the solution on Windows for pushes and pull requests.
 
 1. Install the .NET 8 SDK from [dotnet.microsoft.com/download/dotnet/8.0](https://dotnet.microsoft.com/download/dotnet/8.0). Choose the Windows x64 SDK installer and accept its defaults.
 2. Install Visual Studio Code from [code.visualstudio.com](https://code.visualstudio.com/).
