@@ -1,0 +1,26 @@
+# .NET build output
+**/bin/
+**/obj/
+.vs/
+.vscode/*
+!.vscode/extensions.json
+*.user
+*.suo
+
+# Local application data and exports
+events.db
+events.db-shm
+events.db-wal
+settings.json
+*.csv
+*.log
+
+# Installer output
+installer/output/
+*.exe
+*.msi
+*.msix
+
+# OS/editor files
+Thumbs.db
+.DS_Store
