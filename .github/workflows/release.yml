@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Publish self-contained Windows x64 app
+        run: dotnet publish .\src\FamilyPCMonitor.App\FamilyPCMonitor.App.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output publish
+      - name: Package release assets
+        shell: pwsh
+        run: |
+          @"
+          Family PC Monitor Windows x64 release.
+          Run FamilyPCMonitor.exe. This build includes the .NET runtime.
+          Review the project README for setup, limitations, and privacy details.
+          Use transparently only on a computer you own or are authorized to administer.
+          "@ | Set-Content publish\README.txt
+          Compress-Archive -Path publish\* -DestinationPath FamilyPCMonitor-win-x64.zip
+      - name: Upload release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload ${{ github.ref_name }} publish/FamilyPCMonitor.exe FamilyPCMonitor-win-x64.zip --clobber
